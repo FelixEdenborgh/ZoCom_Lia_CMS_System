@@ -1,0 +1,57 @@
+.footer {
+    background-color: #343a40; /* Valfri bakgrundsfärg */
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centrerar copyright-texten horisontellt */
+    justify-content: space-between; /* För att distribuera innehållet jämt */
+    text-align: center;
+    position: relative;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between; /* Fördelar vänster och höger sektion */
+    width: 100%;
+    max-width: 1200px; /* Begränsar bredden om du vill ha mer kompakt layout */
+}
+
+.footer-left, .footer-right {
+    width: 45%;
+}
+
+    .footer-left p, .footer-right p {
+        margin: 5px 0;
+    }
+
+/* Center copyright text at the bottom */
+.footer-copyright {
+    width: 100%;
+    text-align: center; /* Centrerar copyright-meddelandet */
+    margin-top: 20px;
+}
+
+    .footer-copyright p {
+        margin: 0;
+        padding-top: 10px;
+        border-top: 1px solid #e0e0e0; /* Valfri linje ovanför copyright-texten */
+    }
+
+#blazor-error-ui {
+    background: lightyellow;
+    bottom: 0;
+    box-shadow: 0 -1px 2px rgba(0, 0, 0, 0.2);
+    display: none;
+    left: 0;
+    padding: 0.6rem 1.25rem 0.7rem 1.25rem;
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+}
+
+    #blazor-error-ui .dismiss {
+        cursor: pointer;
+        position: absolute;
+        right: 0.75rem;
+        top: 0.5rem;
+    }

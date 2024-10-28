@@ -1,0 +1,33 @@
+@using CodeMonkeys.CMS.Public.Components.Account.Shared
+@inherits BaseComponent<UserViewer>
+@rendermode InteractiveServer
+
+@if (IsLoading)
+{
+    <div class="loading">
+        <div class="spinner">Loading...</div>
+    </div>
+}
+else
+{
+    <div class="user-view">
+        @if (ShowReturnButton)
+        {
+            <div class="backbutton">
+                    @* TODO: Fix the html anchor/button *@
+                    <a href="javascript:history.back()"><button class="btn btn-lg btn-primary GobackBtn">Gå tillbaka</button></a>
+                </div>
+                <br />
+        }
+        <StatusMessage />
+
+        @if (UserViewHeader != null)
+        {
+            <div class="user-view-header px-4">
+                @UserViewHeader
+            </div>
+        }
+
+        @ChildContent
+    </div>
+}

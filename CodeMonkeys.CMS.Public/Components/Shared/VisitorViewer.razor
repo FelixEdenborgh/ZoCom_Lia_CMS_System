@@ -1,0 +1,21 @@
+@inherits BaseComponent<VisitorViewer>
+
+    @if (!string.IsNullOrEmpty(Title))
+    {
+        <PageTitle>@Title</PageTitle>
+    }
+
+@if (IsLoading)
+{
+    <div class="loading">
+        <div class="spinner">Loading...</div>
+    </div>
+}
+else
+{
+    <div class="visitor-view">
+        <div class="visitor-body">
+            @ChildContent
+        </div>
+    </div>
+}

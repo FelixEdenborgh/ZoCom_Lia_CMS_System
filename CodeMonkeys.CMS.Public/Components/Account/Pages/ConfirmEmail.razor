@@ -1,0 +1,60 @@
+﻿@page "/Account/ConfirmEmail"
+@inherits BaseComponent<ConfirmEmail>
+@using System.Text
+@using Microsoft.AspNetCore.Identity
+@using Microsoft.AspNetCore.WebUtilities
+@using CodeMonkeys.CMS.Public.Shared.Data
+@using CodeMonkeys.CMS.Public.Shared.Entities
+
+
+@inject UserManager<User> UserManager
+@inject IdentityRedirectManager RedirectManager
+@inject NavigationManager NavigationManager
+
+<PageTitle>Confirm email</PageTitle>
+
+@if (IsLoading)
+{
+    <Loading />
+}
+else
+{
+    <h1>Confirm email</h1>
+    <StatusMessage Message="@statusMessage" />
+}
+
+@code {
+    private string? statusMessage;
+
+    [CascadingParameter]
+    private HttpContext HttpContext { get; set; } = default!;
+
+    [SupplyParameterFromQuery]
+    private string? UserId { get; set; }
+
+    [SupplyParameterFromQuery]
+    private string? Code { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        if (UserId is null || Code is null)
+        {
+            RedirectManager.RedirectTo("");
+        }
+
+        var user = await UserManager.FindByIdAsync(UserId);
+        if (user is null)
+        {
+            HttpContext.Response.StatusCode = StatusCodes.Status404NotFound;
+            statusMessage = $"Error loading user with ID {UserId}";
+        }
+        else
+        {
+            var code = Encoding.UTF8.GetString(WebEncoders.Base64UrlDecode(Code));
+            var result = await UserManager.ConfirmEmailAsync(user, code);
+            statusMessage = result.Succeeded ? "Thank you for confirming your email." : "Error confirming your email.";
+            await Task.Delay(1000); // Väntar i 1 sekunder innan den går vidare
+            NavigationManager.NavigateTo("/PostConfirmation");
+        }
+    }
+}

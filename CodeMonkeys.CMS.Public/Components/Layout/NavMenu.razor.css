@@ -1,0 +1,92 @@
+/* Header styles */
+header {
+    background-color: #343a40;
+    color: white;
+    padding: 25px 20px;
+    position: relative;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    /* display: flex; */
+    align-items: center;
+    padding-left: 250px;
+}
+
+.header-content {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    max-width: 1200px; /* Justera till �nskad bredd */
+}
+
+.header-title {
+    margin: 0;
+    font-size: 1.5rem;
+    font-weight: bold;
+    flex: 1; /* L�ter titeln ta upp plats s� den inte �verlappar med menyn */
+}
+
+/* Navigation styles */
+.navbar-nav {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+}
+
+.nav-item {
+    margin-left: 20px; /* Mindre avst�nd s� att menyn inte skjuts ut */
+}
+
+.nav-link {
+    color: white !important; /* Viktigt: S�kerst�ll att f�rgen alltid �r vit */
+    text-decoration: none;
+    font-weight: bold;
+    padding: 5px 10px;
+}
+
+    .nav-link:hover {
+        color: #ffc107;
+        text-decoration: underline;
+    }
+
+.button-logout {
+    background: none;
+    border: none;
+    color: white !important; /* Viktigt: S�kerst�ll att f�rgen alltid �r vit */
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+    .button-logout:hover {
+        color: #ffc107;
+        text-decoration: underline;
+    }
+
+/* Responsive adjustments for navigation */
+@media (max-width: 768px) {
+
+    header {
+        height: auto;
+        padding: 15px 20px;
+    }
+
+
+    .header-content {
+        flex-direction: column; /* G�r att elementen staplas vid smala sk�rmar */
+        margin-top: 29%;
+    }
+
+    .navbar-nav {
+        flex-direction: column;
+        align-items: flex-start;
+        width: 100%; /* L�ter menyn ta full bredd */
+    }
+
+    .nav-item {
+        margin-left: 0;
+        margin-bottom: 10px; /* Avst�nd mellan l�nktext p� smala sk�rmar */
+    }
+}
