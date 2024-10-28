@@ -1,4 +1,5 @@
 My original prodject here: https://github.com/Zocom-LIA/CmsCodeMonkeys
+Hosted here: https://codemonkeyspubliccms.azurewebsites.net/#Home
 
 ---
 
